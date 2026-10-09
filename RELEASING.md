@@ -1,8 +1,9 @@
 # Releasing
 
-The package is published to npm as [`nusii`](https://www.npmjs.com/package/nusii)
-by GitHub Actions. Nobody needs an npm token to release: pushing a version tag
-is enough.
+The package is published to npm as [`@nusii/nusii`](https://www.npmjs.com/package/@nusii/nusii),
+owned by the [`nusii`](https://www.npmjs.com/org/nusii) npm organization, by
+GitHub Actions. Nobody needs an npm token to release: pushing a version tag is
+enough.
 
 ## Releasing a new version
 
@@ -42,7 +43,7 @@ again, publishes to npm with a provenance statement, and creates a
 changelog notes. Follow it with `gh run watch`, and confirm with:
 
 ```bash
-npm view nusii version
+npm view @nusii/nusii version
 ```
 
 ### Prereleases
@@ -52,8 +53,8 @@ npm version prerelease --preid beta   # 0.2.0-beta.0
 git push --follow-tags
 ```
 
-Prereleases are published under the `next` dist-tag (`npm install nusii@next`),
-so `npm install nusii` keeps installing the latest stable version.
+Prereleases are published under the `next` dist-tag (`npm install @nusii/nusii@next`),
+so `npm install @nusii/nusii` keeps installing the latest stable version.
 
 ## When something goes wrong
 
@@ -64,9 +65,9 @@ so `npm install nusii` keeps installing the latest stable version.
   `npm version`. Delete it (`git push --delete origin vx.y.z`, `git tag -d vx.y.z`)
   and use `npm version`.
 - **npm answers 404 or "ENEEDAUTH" on publish**: the trusted publisher is missing
-  or the workflow file was renamed. Check it with `npm trust list nusii`.
+  or the workflow file was renamed. Check it with `npm trust list @nusii/nusii`.
 - **A broken version went out**: publish a fixed version. `npm deprecate
-  nusii@x.y.z "Use x.y.z+1"` warns people still installing the broken one.
+  @nusii/nusii@x.y.z "Use x.y.z+1"` warns people still installing the broken one.
   Unpublishing is only possible within 72 hours and breaks anyone depending on it.
 
 ## How publishing is set up
@@ -85,9 +86,12 @@ These steps were done once, for 0.1.0, and are kept here for reference.
    allows `.github/workflows/release.yml` in `Nusii/nusii-typescript` to publish:
 
    ```bash
-   npm trust github nusii --repo Nusii/nusii-typescript --file release.yml
-   npm trust list nusii
+   npm trust github @nusii/nusii --repo Nusii/nusii-typescript --file release.yml
+   npm trust list @nusii/nusii
    ```
 
-To give another npm account publish rights by hand (not needed for releases):
-`npm owner add <username> nusii`.
+To give someone else access to the package (not needed for releases), add them to
+the `nusii` organization on npmjs.com.
+
+The unscoped name `nusii` cannot be used: npm rejects it as too similar to the
+existing `jsii` package. Scoped names are exempt from that check.

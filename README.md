@@ -1,6 +1,6 @@
 # Nusii for JavaScript & TypeScript
 
-[![npm version](https://img.shields.io/npm/v/nusii.svg)](https://www.npmjs.com/package/nusii)
+[![npm version](https://img.shields.io/npm/v/@nusii/nusii.svg)](https://www.npmjs.com/package/@nusii/nusii)
 [![CI](https://github.com/Nusii/nusii-typescript/actions/workflows/ci.yml/badge.svg)](https://github.com/Nusii/nusii-typescript/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
@@ -47,15 +47,15 @@ Full API reference: [developer.nusii.com](https://developer.nusii.com)
 ## Installation
 
 ```bash
-npm install nusii
+npm install @nusii/nusii
 ```
 
 Or with your package manager of choice:
 
 ```bash
-pnpm add nusii
-yarn add nusii
-bun add nusii
+pnpm add @nusii/nusii
+yarn add @nusii/nusii
+bun add @nusii/nusii
 ```
 
 ## Getting an API key
@@ -82,7 +82,7 @@ node --env-file=.env index.js
 ## Quick start
 
 ```ts
-import { Nusii } from 'nusii';
+import { Nusii } from '@nusii/nusii';
 
 // Reads NUSII_API_KEY from the environment.
 const nusii = new Nusii();
@@ -114,7 +114,7 @@ await nusii.proposals.send(proposal.id, {
 Using CommonJS:
 
 ```js
-const { Nusii } = require('nusii');
+const { Nusii } = require('@nusii/nusii');
 
 const nusii = new Nusii({ apiKey: process.env.NUSII_API_KEY });
 ```
@@ -364,7 +364,7 @@ await nusii.webhookEndpoints.delete(endpoint.id);
 Then receive them. `parseWebhookEvent` gives you a typed event you can narrow by `event_name`:
 
 ```ts
-import { parseWebhookEvent } from 'nusii';
+import { parseWebhookEvent } from '@nusii/nusii';
 
 // Next.js route handler, Hono, Cloudflare Workers, Bun.serve...
 export async function POST(request: Request) {
@@ -465,7 +465,7 @@ A `Page` is iterable the same way: `for await (const item of page)` continues fr
 Failed requests throw an error you can check with `instanceof`:
 
 ```ts
-import { NotFoundError, NusiiError, RateLimitError, UnprocessableEntityError } from 'nusii';
+import { NotFoundError, NusiiError, RateLimitError, UnprocessableEntityError } from '@nusii/nusii';
 
 try {
   await nusii.clients.create({ name: '', email: 'not-an-email' });
@@ -568,7 +568,7 @@ import type {
   LineItem,
   WebhookEvent,
   ClientCreateParams,
-} from 'nusii';
+} from '@nusii/nusii';
 
 function isOpen(proposal: Proposal): boolean {
   return proposal.status === 'draft' || proposal.status === 'pending';

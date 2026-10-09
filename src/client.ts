@@ -94,7 +94,7 @@ export interface RequestConfig {
  *
  * @example
  * ```ts
- * import { Nusii } from 'nusii';
+ * import { Nusii } from '@nusii/nusii';
  *
  * const nusii = new Nusii({ apiKey: process.env.NUSII_API_KEY });
  * const proposals = await nusii.proposals.list({ status: 'pending' });

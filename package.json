@@ -1,5 +1,5 @@
 {
-  "name": "nusii",
+  "name": "@nusii/nusii",
   "version": "0.1.0",
   "description": "Official TypeScript/JavaScript client for the Nusii proposal software API",
   "keywords": [
