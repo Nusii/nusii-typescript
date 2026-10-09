@@ -86,7 +86,7 @@ These steps were done once, for 0.1.0, and are kept here for reference.
    allows `.github/workflows/release.yml` in `Nusii/nusii-typescript` to publish:
 
    ```bash
-   npm trust github @nusii/nusii --repo Nusii/nusii-typescript --file release.yml
+   npm trust github @nusii/nusii --repo Nusii/nusii-typescript --file release.yml --allow-publish
    npm trust list @nusii/nusii
    ```
 
