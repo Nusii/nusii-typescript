@@ -1,0 +1,9 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "types": ["node"],
+    "isolatedDeclarations": false,
+    "declaration": false
+  },
+  "include": [".", "../src", "../tsdown.config.ts", "../vitest.config.ts"]
+}

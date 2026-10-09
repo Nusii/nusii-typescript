@@ -1,0 +1,74 @@
+{
+  "name": "nusii",
+  "version": "0.1.0",
+  "description": "Official TypeScript/JavaScript client for the Nusii proposal software API",
+  "keywords": [
+    "nusii",
+    "proposals",
+    "proposal software",
+    "api",
+    "client",
+    "sdk",
+    "typescript"
+  ],
+  "homepage": "https://github.com/Nusii/nusii-typescript#readme",
+  "bugs": {
+    "url": "https://github.com/Nusii/nusii-typescript/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nusii/nusii-typescript.git"
+  },
+  "license": "MIT",
+  "author": "Nusii <support@nusii.com> (https://nusii.com)",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.cts",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p test",
+    "lint": "biome check .",
+    "format": "biome check --write .",
+    "test": "vitest run --project unit",
+    "test:watch": "vitest --project unit",
+    "test:integration": "vitest run --project integration",
+    "check": "npm run lint && npm run typecheck && npm run test && npm run build",
+    "prepublishOnly": "npm run check",
+    "preversion": "node scripts/release.mjs check && npm run check",
+    "version": "node scripts/release.mjs stamp && git add src/version.ts CHANGELOG.md"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/core": "^0.18.5",
+    "@biomejs/biome": "^2.5.15",
+    "@types/node": "^26.6.4",
+    "publint": "^0.3.25",
+    "tsdown": "^0.23.0",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.3"
+  }
+}
